@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Systems.Server.CharacterMovement
 {
-    public class RotateBeforeMovingSystem : IEcsRunSystem
+    public class PremovingRotationSystem : IEcsRunSystem
     {
         private readonly EcsFilter<MovableDataComponent, RotateBeforeMovingComponent, OrientationComponent> _filter;
         

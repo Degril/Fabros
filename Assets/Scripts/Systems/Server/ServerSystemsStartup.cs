@@ -15,7 +15,7 @@ namespace Systems.Server
         public EcsSystems GetUpdateSystems(EcsWorld world, IServices services)
         {
             return new EcsSystems(world)
-                .Add(new RotateBeforeMovingSystem())
+                .Add(new PremovingRotationSystem())
                 .Add(new MoveSystem())
                 .Add(new GateOpeningSystem())
                 .Add(new CharacterStateSystem());
