@@ -1,14 +1,17 @@
 ﻿using Leopotam.Ecs;
 using Services.Both;
-using Systems.Both;
+using Systems.Both.CharacterMovement;
 
-namespace Systems.Client
+namespace Systems.Both
 {
-    public class ClientSystemsStartup : ISystemsStartup
+    public class BothSystemStartup: ISystemsStartup
     {
         public EcsSystems GetPreUpdateSystems(EcsWorld world, IServices services)
         {
             var ecsSystems = new EcsSystems(world);
+            
+            ecsSystems.Add(new InputSystem(services.Input));
+            
             return ecsSystems;
         }
 
