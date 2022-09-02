@@ -1,4 +1,4 @@
-﻿namespace Components.Both.Character
+﻿namespace Components.Server.Character
 {
     public struct PlayerTag
     {

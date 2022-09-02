@@ -1,7 +1,7 @@
 ﻿using Leopotam.Ecs;
 using UnityEngine;
 
-namespace Components.Both.Character.Movement
+namespace Components.Server.Character.Movement
 {
     public struct MovableComponent : IEcsAutoReset<MovableComponent>
     {

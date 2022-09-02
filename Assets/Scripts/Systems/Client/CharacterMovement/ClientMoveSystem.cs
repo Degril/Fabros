@@ -1,6 +1,6 @@
-﻿using Components.Client.CharacterMovement;
-using Components.Server.Character;
+﻿using Components.Server.Character;
 using Leopotam.Ecs;
+using Services.Client.CharacterMovement;
 
 namespace Systems.Client.CharacterMovement
 {
@@ -13,9 +13,16 @@ namespace Systems.Client.CharacterMovement
             {
                 var orientation = _filter.Get1(i);
                 ref var transform = ref _filter.Get2(i);
-
-                transform.Transform.position = orientation.Position;
-                transform.Transform.rotation = orientation.Rotation;
+                if (float.IsNaN(orientation.Position.x))
+                {
+                    orientation.Position = transform.Transform.position;
+                    orientation.Rotation = transform.Transform.rotation;
+                }
+                else
+                {
+                    transform.Transform.position = orientation.Position;
+                    transform.Transform.rotation = orientation.Rotation;
+                }
             }
         }
     }

@@ -1,6 +1,5 @@
-﻿using Components.Both.Character.Movement;
-using Components.Server.Character;
-using Components.Server.CharacterMovement;
+﻿using Components.Server.Character;
+using Components.Server.Character.Movement;
 using Leopotam.Ecs;
 using UnityEngine;
 

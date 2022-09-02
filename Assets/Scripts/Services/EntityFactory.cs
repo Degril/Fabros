@@ -1,11 +1,10 @@
-using Components.Both.Character;
-using Components.Both.Character.Movement;
-using Components.Client.CharacterMovement;
+using Components.Client.Character;
+using Components.Client.Character.Movement;
 using Components.Server.Character;
-using Components.Server.CharacterMovement;
+using Components.Server.Character.Movement;
 using Data;
-using Data.Character;
 using Leopotam.Ecs;
+using Services.Client.CharacterMovement;
 using UnityEngine;
 
 namespace Services
@@ -29,11 +28,11 @@ namespace Services
             characterEntity.Get<MovableStateComponent>();
             ref var animationComponent = ref characterEntity.Get<AnimationComponent>();
 
+            
             var characterBehaviour = Instantiate(DataProvider.Instance.CharacterBehaviour);
             
             animationComponent.Animator = characterBehaviour.Animator;
             transformComponent.Transform = characterBehaviour.transform;
-            transformComponent.CharacterController = characterBehaviour.CharacterController;
         }
     
     }

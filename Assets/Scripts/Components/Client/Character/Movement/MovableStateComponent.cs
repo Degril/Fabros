@@ -1,4 +1,4 @@
-﻿namespace Components.Both.Character.Movement
+﻿namespace Components.Client.Character.Movement
 {
     internal struct MovableStateComponent
     {

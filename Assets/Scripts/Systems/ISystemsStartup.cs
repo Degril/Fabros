@@ -1,12 +1,13 @@
 ﻿using Leopotam.Ecs;
-using Services.Both;
+using Services;
 
-namespace Systems.Both
+namespace Systems
 {
     public interface ISystemsStartup
     {
         EcsSystems GetPreUpdateSystems(EcsWorld world, IServices services);
         EcsSystems GetUpdateSystems(EcsWorld world, IServices services);
         EcsSystems GetPostUpdateSystems(EcsWorld world, IServices services);
+        void InitOneFrameSystems(EcsSystems systems);
     }
 }

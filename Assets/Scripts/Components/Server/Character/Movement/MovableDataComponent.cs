@@ -1,4 +1,4 @@
-﻿namespace Components.Server.CharacterMovement
+﻿namespace Components.Server.Character.Movement
 {
     internal struct MovableDataComponent
     {

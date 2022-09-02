@@ -1,12 +1,9 @@
-﻿using Components.Both.Character;
-using Components.Both.Character.Movement;
-using Components.Client.CharacterMovement;
-using Components.Server.CharacterMovement;
+﻿using Components.Server.Character;
+using Components.Server.Character.Movement;
 using Leopotam.Ecs;
-using Services.Both.CharacterMovement;
-using UnityEngine;
+using Services.Client.CharacterMovement;
 
-namespace Systems.Both.CharacterMovement
+namespace Systems.Client.CharacterMovement
 {
     public class InputSystem : IEcsRunSystem
     {

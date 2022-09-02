@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Services.Both.CharacterMovement
+namespace Services.Client.CharacterMovement
 {
     public interface IInput
     {

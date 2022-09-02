@@ -1,7 +1,7 @@
 ﻿using Leopotam.Ecs;
-using Services.Both;
-using Systems.Both;
+using Services;
 using Systems.Server.CharacterMovement;
+using Systems.Server.Environment;
 
 namespace Systems.Server
 {
@@ -17,12 +17,18 @@ namespace Systems.Server
             return new EcsSystems(world)
                 .Add(new RotateBeforeMovingSystem())
                 .Add(new MoveSystem())
+                .Add(new GateOpeningSystem())
                 .Add(new CharacterStateSystem());
         }
 
         public EcsSystems GetPostUpdateSystems(EcsWorld world, IServices services)
         {
             return new EcsSystems(world);
+        }
+
+        public void InitOneFrameSystems(EcsSystems systems)
+        {
+            
         }
     }
 }

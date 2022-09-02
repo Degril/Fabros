@@ -1,6 +1,6 @@
-﻿using Services.Both.CharacterMovement;
+﻿using Services.Client.CharacterMovement;
 
-namespace Services.Both
+namespace Services
 {
     public interface IServices
     {

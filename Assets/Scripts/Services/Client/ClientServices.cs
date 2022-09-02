@@ -1,6 +1,4 @@
-﻿using Services.Both;
-using Services.Both.CharacterMovement;
-using Services.Client.CharacterMovement;
+﻿using Services.Client.CharacterMovement;
 using UnityEngine;
 
 namespace Services.Client

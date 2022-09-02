@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Components.Both.Character
+namespace Components.Client.Character
 {
     internal struct AnimationComponent
     {

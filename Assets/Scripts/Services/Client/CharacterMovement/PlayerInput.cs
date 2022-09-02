@@ -1,11 +1,10 @@
-﻿using Services.Both.CharacterMovement;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Services.Client.CharacterMovement
 {
     public class PlayerInput : IInput
     {
-        private Camera _camera;
+        private readonly Camera _camera;
         
         public PlayerInput(Camera camera)
         {

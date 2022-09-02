@@ -1,5 +1,5 @@
-﻿using Components.Both.Character.Movement;
-using Components.Server.CharacterMovement;
+﻿using Components.Client.Character.Movement;
+using Components.Server.Character.Movement;
 using Leopotam.Ecs;
 
 namespace Systems.Server

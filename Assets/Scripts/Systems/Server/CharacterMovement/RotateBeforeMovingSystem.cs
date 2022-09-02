@@ -1,6 +1,5 @@
-﻿using Components.Both.Character.Movement;
-using Components.Server.Character;
-using Components.Server.CharacterMovement;
+﻿using Components.Server.Character;
+using Components.Server.Character.Movement;
 using Leopotam.Ecs;
 using UnityEngine;
 
@@ -25,7 +24,7 @@ namespace Systems.Server.CharacterMovement
                 var transformForward = orientation.Rotation * Vector3.forward;
 
                 var rotationDistance = Vector3.Dot(transformForward, direction);
-                if (rotationDistance < 0.95f)
+                if (rotationDistance < 0.99f)
                 {
                     var singleStep = movableData.RotationSpeed * Time.deltaTime;
                     

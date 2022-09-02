@@ -4,8 +4,9 @@ using Services.Client;
 using Systems.Client;
 using Systems.Server;
 using UnityEngine;
+using Voody.UniLeo;
 
-namespace Systems.Both
+namespace Systems
 {
     public class EcsGameStartup : MonoBehaviour
     {
@@ -41,10 +42,15 @@ namespace Systems.Both
                 _preUpdateSystems.Add(systemsStartup.GetPreUpdateSystems(_world, services));
                 _updateSystems.Add(systemsStartup.GetUpdateSystems(_world, services));
                 _postUpdateSystems.Add(systemsStartup.GetPostUpdateSystems(_world, services));
+                
+                
             }
-        
+
             foreach (var ecsSystems in _systemsQueue)
+            {
+                ecsSystems.ConvertScene();
                 ecsSystems.Init();
+            }
         }
     
 
