@@ -11,7 +11,7 @@ namespace Services.Client.CharacterMovement
         {
             _camera = camera;
         }
-        public bool IsFireButtonPressed(out Vector2 targetPosition)
+        public bool IsFireButtonPressed(out Vector3 targetPosition)
         {
             var isPressed = Input.GetKeyDown(KeyCode.Mouse0);
             

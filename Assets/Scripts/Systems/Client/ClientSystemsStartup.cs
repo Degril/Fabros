@@ -1,6 +1,8 @@
 ﻿using Leopotam.Ecs;
 using Services.Both;
 using Systems.Both;
+using Systems.Both.CharacterMovement;
+using Systems.Client.CharacterMovement;
 
 namespace Systems.Client
 {
@@ -8,20 +10,20 @@ namespace Systems.Client
     {
         public EcsSystems GetPreUpdateSystems(EcsWorld world, IServices services)
         {
-            var ecsSystems = new EcsSystems(world);
-            return ecsSystems;
+            return new EcsSystems(world)
+                .Add(new InputSystem(services.Input));
         }
 
         public EcsSystems GetUpdateSystems(EcsWorld world, IServices services)
         {
-            var ecsSystems = new EcsSystems(world);
-            return ecsSystems;
+            return new EcsSystems(world);
         }
 
         public EcsSystems GetPostUpdateSystems(EcsWorld world, IServices services)
         {
-            var ecsSystems = new EcsSystems(world);
-            return ecsSystems;
+            return new EcsSystems(world)
+                .Add(new ClientMoveSystem())
+                .Add(new AnimationSystem());
         }
     }
 }
