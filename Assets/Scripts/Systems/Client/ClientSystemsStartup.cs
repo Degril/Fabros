@@ -2,6 +2,7 @@
 using Services;
 using Systems.Client.CharacterMovement;
 using Systems.Client.Environment;
+using Systems.Server.CharacterMovement;
 
 namespace Systems.Client
 {
@@ -23,12 +24,7 @@ namespace Systems.Client
             return new EcsSystems(world)
                 .Add(new MovementAnimationSystem())
                 .Add(new GateAnimationSystem())
-                .Add(new ClientMoveSystem());
-        }
-
-        public void InitOneFrameSystems(EcsSystems systems)
-        {
-            
+                .Add(new ClientMovementSystem());
         }
     }
 }

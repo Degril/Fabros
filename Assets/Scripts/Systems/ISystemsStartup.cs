@@ -8,6 +8,5 @@ namespace Systems
         EcsSystems GetPreUpdateSystems(EcsWorld world, IServices services);
         EcsSystems GetUpdateSystems(EcsWorld world, IServices services);
         EcsSystems GetPostUpdateSystems(EcsWorld world, IServices services);
-        void InitOneFrameSystems(EcsSystems systems);
     }
 }

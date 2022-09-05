@@ -4,7 +4,7 @@ using Services.Client.CharacterMovement;
 
 namespace Systems.Client.CharacterMovement
 {
-    public class ClientMoveSystem : IEcsRunSystem
+    public class ClientMovementSystem : IEcsRunSystem
     {
         private readonly EcsFilter<OrientationComponent, TransformComponent> _filter;
         public void Run()
