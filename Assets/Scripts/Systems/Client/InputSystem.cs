@@ -1,9 +1,10 @@
-﻿using Components.Server.Character;
+﻿using Components.Client.Character.Movement;
+using Components.Server.Character;
 using Components.Server.Character.Movement;
 using Leopotam.Ecs;
 using Services.Client.CharacterMovement;
 
-namespace Systems.Client.CharacterMovement
+namespace Systems.Client
 {
     public class InputSystem : IEcsRunSystem
     {
@@ -23,10 +24,8 @@ namespace Systems.Client.CharacterMovement
             foreach (var i in _filter)
             {
                 var entity = _filter.GetEntity(i);
-                entity.Del<MovableComponent>();
-                ref var rotateBeforeMovingComponent = ref entity.Get<RotateBeforeMovingComponent>();
-                
-                rotateBeforeMovingComponent.TargetPosition = targetPosition;
+                ref var moveCommand = ref entity.Get<MoveCommand>();
+                moveCommand.TargetPosition = targetPosition;
             }
         }
     }

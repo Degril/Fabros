@@ -1,4 +1,5 @@
-﻿using Leopotam.Ecs;
+﻿using Components.Client.Character.Movement;
+using Leopotam.Ecs;
 using Services;
 using Systems.Server.CharacterMovement;
 using Systems.Server.Environment;
@@ -9,7 +10,9 @@ namespace Systems.Server
     {
         public EcsSystems GetPreUpdateSystems(EcsWorld world, IServices services)
         {
-            return new EcsSystems(world);
+            return new EcsSystems(world)
+                .Add(new MoveCommandSystem())
+                .OneFrame<MoveCommand>();
         }
 
         public EcsSystems GetUpdateSystems(EcsWorld world, IServices services)
@@ -24,11 +27,6 @@ namespace Systems.Server
         public EcsSystems GetPostUpdateSystems(EcsWorld world, IServices services)
         {
             return new EcsSystems(world);
-        }
-
-        public void InitOneFrameSystems(EcsSystems systems)
-        {
-            
         }
     }
 }
