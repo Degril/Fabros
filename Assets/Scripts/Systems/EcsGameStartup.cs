@@ -1,10 +1,11 @@
-using Leopotam.Ecs;
+using System.Linq;
+using Leopotam.EcsLite;
 using Services;
 using Services.Client;
 using Systems.Client;
 using Systems.Server;
 using UnityEngine;
-using Voody.UniLeo;
+using Voody.UniLeo.Lite;
 
 namespace Systems
 {
@@ -36,14 +37,15 @@ namespace Systems
             _postUpdateSystems = new EcsSystems(_world);
             var services = new ClientServices();
             _systemsQueue = new[] { _preUpdateSystems, _updateSystems, _postUpdateSystems };
-        
+
             foreach (var systemsStartup in _systemsStartups)
             {
-                _preUpdateSystems.Add(systemsStartup.GetPreUpdateSystems(_world, services));
-                _updateSystems.Add(systemsStartup.GetUpdateSystems(_world, services));
-                _postUpdateSystems.Add(systemsStartup.GetPostUpdateSystems(_world, services));
-                
-                
+                foreach (var preUpdateSystem in systemsStartup.GetPreUpdateSystems(services))
+                    _preUpdateSystems.Add(preUpdateSystem);
+                foreach (var preUpdateSystem in systemsStartup.GetUpdateSystems(services))
+                    _updateSystems.Add(preUpdateSystem);
+                foreach (var preUpdateSystem in systemsStartup.GetPostUpdateSystems(services))
+                    _postUpdateSystems.Add(preUpdateSystem);
             }
 
             foreach (var ecsSystems in _systemsQueue)

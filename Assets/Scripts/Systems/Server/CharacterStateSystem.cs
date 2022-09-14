@@ -1,26 +1,33 @@
 ﻿using Components.Client.Character.Movement;
 using Components.Server.Character.Movement;
-using Leopotam.Ecs;
+using Leopotam.EcsLite;
 
 namespace Systems.Server
 {
     public class CharacterStateSystem : IEcsRunSystem
     {
-        private readonly EcsFilter<MovableDataComponent, MovableStateComponent, MovableComponent> _movingFilter;
-        private readonly EcsFilter<MovableDataComponent, MovableStateComponent>.Exclude<MovableComponent> _unMovingFilter;
-        public void Run()
+        public void Run(IEcsSystems systems)
         {
-            foreach (var i in _movingFilter)
+            var world = systems.GetWorld ();
+            var movingFilter = world.Filter<MovableDataComponent>()
+                .Inc<MovableStateComponent>()
+                .Inc<MovableComponent>().End();
+            
+            var unMovingFilter = world.Filter<MovableDataComponent>()
+                .Inc<MovableStateComponent>()
+                .Exc<MovableComponent>().End();
+            
+            foreach (var entity in movingFilter)
             {
-                var movableDataComponent = _movingFilter.Get1(i);
-                ref var movableStateComponent = ref _movingFilter.Get2(i);
+                var movableDataComponent = world.GetPool<MovableDataComponent>().Get(entity);
+                ref var movableStateComponent = ref world.GetPool<MovableStateComponent>().Get(entity);
 
                 movableStateComponent.IsMoving = true;
                 movableStateComponent.CurrentSpeed = movableDataComponent.MovementSpeed;
             }
-            foreach (var i in _unMovingFilter)
+            foreach (var entity in unMovingFilter)
             {
-                ref var movableStateComponent = ref _movingFilter.Get2(i);
+                ref var movableStateComponent = ref world.GetPool<MovableStateComponent>().Get(entity);
 
                 movableStateComponent.CurrentSpeed = 0;
                 movableStateComponent.IsMoving = false;

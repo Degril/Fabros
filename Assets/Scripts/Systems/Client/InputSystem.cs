@@ -1,15 +1,14 @@
 ﻿using Components.Client.Character.Movement;
 using Components.Server.Character;
 using Components.Server.Character.Movement;
-using Leopotam.Ecs;
+using Leopotam.EcsLite;
 using Services.Client.CharacterMovement;
+using Utils;
 
 namespace Systems.Client
 {
     public class InputSystem : IEcsRunSystem
     {
-        private readonly EcsFilter<PlayerTag, TransformComponent, MovableDataComponent> _filter;
-
         private readonly IInput _input;
         
         public InputSystem(IInput input)
@@ -17,14 +16,18 @@ namespace Systems.Client
             _input = input;
         }
         
-        public void Run()
+        public void Run(IEcsSystems systems)
         {
             if (!_input.IsFireButtonPressed(out var targetPosition)) return;
             
-            foreach (var i in _filter)
+            var world = systems.GetWorld ();
+            var filter = world.Filter<PlayerTag>()
+                .Inc<TransformComponent>()
+                .Inc<MovableDataComponent>().End ();
+            
+            foreach (var entity in filter)
             {
-                var entity = _filter.GetEntity(i);
-                ref var moveCommand = ref entity.Get<MoveCommand>();
+                ref var moveCommand = ref world.GetPool<MoveCommand>().AddOrGet(entity);
                 moveCommand.TargetPosition = targetPosition;
             }
         }

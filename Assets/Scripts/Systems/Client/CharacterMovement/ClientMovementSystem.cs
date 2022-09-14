@@ -1,18 +1,20 @@
 ﻿using Components.Server.Character;
-using Leopotam.Ecs;
+using Leopotam.EcsLite;
 using Services.Client.CharacterMovement;
 
 namespace Systems.Client.CharacterMovement
 {
     public class ClientMovementSystem : IEcsRunSystem
     {
-        private readonly EcsFilter<OrientationComponent, TransformComponent> _filter;
-        public void Run()
+        public void Run(IEcsSystems systems)
         {
-            foreach (var i in _filter)
+            var world = systems.GetWorld ();
+            var filter = world.Filter<OrientationComponent>()
+                .Inc<TransformComponent>().End ();
+            foreach (var entity in filter)
             {
-                var orientation = _filter.Get1(i);
-                ref var transform = ref _filter.Get2(i);
+                ref var orientation = ref world.GetPool<OrientationComponent>().Get(entity);
+                ref var transform = ref  world.GetPool<TransformComponent>().Get(entity);
                 if (float.IsNaN(orientation.Position.x))
                 {
                     orientation.Position = transform.Transform.position;

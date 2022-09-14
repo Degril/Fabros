@@ -1,12 +1,13 @@
-﻿using Leopotam.Ecs;
+﻿using System.Collections.Generic;
+using Leopotam.EcsLite;
 using Services;
 
 namespace Systems
 {
     public interface ISystemsStartup
     {
-        EcsSystems GetPreUpdateSystems(EcsWorld world, IServices services);
-        EcsSystems GetUpdateSystems(EcsWorld world, IServices services);
-        EcsSystems GetPostUpdateSystems(EcsWorld world, IServices services);
+        IEnumerable<IEcsSystem> GetPreUpdateSystems(IServices services);
+        IEnumerable<IEcsSystem> GetUpdateSystems(IServices services);
+        IEnumerable<IEcsSystem> GetPostUpdateSystems(IServices services);
     }
 }

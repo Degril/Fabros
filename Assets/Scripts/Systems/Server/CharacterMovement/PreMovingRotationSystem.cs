@@ -1,22 +1,24 @@
 ﻿using Components.Server.Character;
 using Components.Server.Character.Movement;
-using Leopotam.Ecs;
+using Leopotam.EcsLite;
 using UnityEngine;
 
 namespace Systems.Server.CharacterMovement
 {
-    public class PremovingRotationSystem : IEcsRunSystem
+    public class PreMovingRotationSystem : IEcsRunSystem
     {
-        private readonly EcsFilter<MovableDataComponent, RotateBeforeMovingComponent, OrientationComponent> _filter;
-        
-        public void Run()
+        public void Run(IEcsSystems systems)
         {
-            foreach (var i in _filter)
+            var world = systems.GetWorld ();
+            var filter = world.Filter<MovableDataComponent>()
+                .Inc<RotateBeforeMovingComponent>()
+                .Inc<OrientationComponent>().End();
+            
+            foreach (var entity in filter)
             {
-                var entity = _filter.GetEntity(i);
-                var movableData = _filter.Get1(i);
-                ref var rotateComponent = ref _filter.Get2(i);
-                ref var orientation = ref _filter.Get3(i);
+                var movableData = world.GetPool<MovableDataComponent>().Get(entity);
+                ref var rotateComponent = ref world.GetPool<RotateBeforeMovingComponent>().Get(entity);
+                ref var orientation = ref world.GetPool<OrientationComponent>().Get(entity);
 
                 var direction = (rotateComponent.TargetPosition - orientation.Position).normalized;
                 direction.y = 0;
@@ -24,7 +26,7 @@ namespace Systems.Server.CharacterMovement
                 var transformForward = orientation.Rotation * Vector3.forward;
 
                 var rotationDistance = Vector3.Dot(transformForward, direction);
-                if (rotationDistance < 0.99f)
+                if (rotationDistance < 0.97f)
                 {
                     var singleStep = movableData.RotationSpeed * Time.deltaTime;
                     
@@ -33,8 +35,7 @@ namespace Systems.Server.CharacterMovement
                 }
                 else
                 {
-                    ref var movableComponent = ref entity.Get<MovableComponent>();
-
+                    ref var movableComponent = ref world.GetPool<MovableComponent>().Add(entity);
                     movableComponent.FromPosition = orientation.Position;
                     movableComponent.TargetPosition = rotateComponent.TargetPosition;
                     
@@ -42,7 +43,7 @@ namespace Systems.Server.CharacterMovement
                     
                     movableComponent.MovingStartTime = Time.time;
                     movableComponent.MovingEndTime = Time.time + distance / movableData.MovementSpeed;
-                    entity.Del<RotateBeforeMovingComponent>();
+                    world.GetPool<RotateBeforeMovingComponent>().Del(entity);
                 }
             }
         }

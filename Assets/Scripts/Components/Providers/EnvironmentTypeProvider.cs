@@ -1,5 +1,5 @@
 ﻿using Components.Client.Environment;
-using Voody.UniLeo;
+using Voody.UniLeo.Lite;
 
 namespace Components.Providers
 {

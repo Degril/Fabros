@@ -12,13 +12,13 @@ GameObject:
   - component: {fileID: 4361246607440874827}
   - component: {fileID: 8585747702750391112}
   - component: {fileID: 8038246828558106633}
-  - component: {fileID: 5871591721725028806}
   - component: {fileID: 3703281312681638531}
   - component: {fileID: 2253616938990228129}
   - component: {fileID: 1243654249264559737}
   - component: {fileID: 2863982855052907974}
   - component: {fileID: 3318638786128990456}
   - component: {fileID: 9060740352833020459}
+  - component: {fileID: 3764084411167916212}
   m_Layer: 0
   m_Name: Gate
   m_TagString: Untagged
@@ -104,19 +104,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5871591721725028806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3903387088324055245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 863c7f7460b2b49abb4fa9a7ff9cb180, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  convertMode: 0
 --- !u!114 &3703281312681638531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,3 +185,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value:
     <Transform>k__BackingField: {fileID: 8855886293480505622}
+--- !u!114 &3764084411167916212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3903387088324055245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15a6449608575be4799da3ae52b9fc6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  convertMode: 0
+  customWorld: 

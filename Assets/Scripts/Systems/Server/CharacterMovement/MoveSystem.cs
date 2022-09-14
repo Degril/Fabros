@@ -1,21 +1,20 @@
 ﻿using Components.Server.Character;
 using Components.Server.Character.Movement;
-using Leopotam.Ecs;
+using Leopotam.EcsLite;
 using UnityEngine;
 
 namespace Systems.Server.CharacterMovement
 {
     public class MoveSystem : IEcsRunSystem
     {
-        private readonly EcsFilter<MovableComponent, OrientationComponent> _filter;
-        
-        public void Run()
+        public void Run(IEcsSystems systems)
         {
-            foreach (var i in _filter)
+            var world = systems.GetWorld ();
+            var filter = world.Filter<MovableComponent>().Inc<OrientationComponent>().End();
+            foreach (var entity in filter)
             {
-                var entity = _filter.GetEntity(i);
-                ref var movableCommand = ref _filter.Get1(i);
-                ref var orientation = ref _filter.Get2(i);
+                ref var movableCommand = ref world.GetPool<MovableComponent>().Get(entity);
+                ref var orientation = ref world.GetPool<OrientationComponent>().Get(entity);
 
                 var totalMovingTime = movableCommand.MovingEndTime - movableCommand.MovingStartTime;
                 var currentMovingTIme = Time.time - movableCommand.MovingStartTime;
@@ -29,7 +28,7 @@ namespace Systems.Server.CharacterMovement
                 orientation.Position = nextPosition;
                     
                 if(currentMovingTIme >= totalMovingTime)
-                    entity.Del<MovableComponent>();
+                    world.GetPool<MovableComponent>().Del(entity);
             }
         }
     }

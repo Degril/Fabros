@@ -1,5 +1,5 @@
-﻿using Components.Client.Character.Movement;
-using Leopotam.Ecs;
+﻿using System.Collections.Generic;
+using Leopotam.EcsLite;
 using Services;
 using Systems.Server.CharacterMovement;
 using Systems.Server.Environment;
@@ -8,25 +8,30 @@ namespace Systems.Server
 {
     public class ServerSystemsStartup : ISystemsStartup
     {
-        public EcsSystems GetPreUpdateSystems(EcsWorld world, IServices services)
+        public IEnumerable<IEcsSystem> GetPreUpdateSystems(IServices services)
         {
-            return new EcsSystems(world)
-                .Add(new MoveCommandSystem())
-                .OneFrame<MoveCommand>();
+            return new IEcsSystem[]
+            {
+            };
         }
 
-        public EcsSystems GetUpdateSystems(EcsWorld world, IServices services)
+        public IEnumerable<IEcsSystem> GetUpdateSystems(IServices services)
         {
-            return new EcsSystems(world)
-                .Add(new PremovingRotationSystem())
-                .Add(new MoveSystem())
-                .Add(new GateOpeningSystem())
-                .Add(new CharacterStateSystem());
+            return new IEcsSystem[]
+            {
+                new MoveCommandSystem(),
+                new PreMovingRotationSystem(),
+                new MoveSystem(),
+                new GateOpeningSystem(),
+                new CharacterStateSystem(),
+            };
         }
 
-        public EcsSystems GetPostUpdateSystems(EcsWorld world, IServices services)
+        public IEnumerable<IEcsSystem> GetPostUpdateSystems(IServices services)
         {
-            return new EcsSystems(world);
+            return new IEcsSystem[]
+            {
+            };
         }
     }
 }

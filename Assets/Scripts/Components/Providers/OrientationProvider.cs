@@ -1,5 +1,6 @@
 ﻿using Components.Server.Character;
-using Voody.UniLeo;
+using Voody.UniLeo.Lite;
+ 
 
 namespace Components.Providers
 {

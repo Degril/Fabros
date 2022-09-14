@@ -1,5 +1,6 @@
 ﻿using Services.Client.CharacterMovement;
-using Voody.UniLeo;
+using Voody.UniLeo.Lite;
+ 
 
 namespace Components.Providers
 {

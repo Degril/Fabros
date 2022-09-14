@@ -1,45 +1,52 @@
 ﻿using Components.Client.Environment;
 using Components.Server.Environment;
-using Leopotam.Ecs;
+using Leopotam.EcsLite;
 using UnityEngine;
 
 namespace Systems.Server.Environment
 {
     public class GateOpeningSystem : IEcsRunSystem
     {
-        private readonly EcsFilter<EnvironmentTypeComponent, TriggerComponent> _buttonFilter;
-        private readonly EcsFilter<EnvironmentTypeComponent, AnimationTimeComponent, LerpTimeComponent> _gateFilter;
-        public void Run()
+        public void Run(IEcsSystems systems)
         {
-            foreach (var i in _buttonFilter)
+            var world = systems.GetWorld ();
+            var buttonFilter = world.Filter<EnvironmentTypeComponent>()
+                .Inc<TriggerComponent>().End();
+            
+            var gateFilter = world.Filter<EnvironmentTypeComponent>()
+                .Inc<AnimationTimeComponent>()
+                .Inc<LerpTimeComponent>().End();
+
+            foreach (var buttonEntity in buttonFilter)
             {
-                var environmentComponent = _buttonFilter.Get1(i);
-                var buttonComponent = _buttonFilter.Get2(i);
+                var buttonEnvironmentComponent = world.GetPool<EnvironmentTypeComponent>().Get(buttonEntity);
+                var buttonTriggerComponent = world.GetPool<TriggerComponent>().Get(buttonEntity);
                 
-                foreach (var j in _gateFilter)
+                foreach (var gateEntity in gateFilter)
                 {
-                    var gateComponent = _gateFilter.Get1(j);
-                    var animationTimeComponent = _gateFilter.Get2(j);
-                    ref var lerpTimeComponent = ref _gateFilter.Get3(j);
-                    if (gateComponent.EnvironmentType != environmentComponent.EnvironmentType) continue;
-                    if (buttonComponent.TriggerBehaviour.IsTriggered != (lerpTimeComponent.StartTime == 0)) continue;
+                    var gateEnvironmentComponent = world.GetPool<EnvironmentTypeComponent>().Get(gateEntity);
+                    var gateAnimationTimeComponent = world.GetPool<AnimationTimeComponent>().Get(gateEntity);
+                    ref var gateLerpTimeComponent = ref world.GetPool<LerpTimeComponent>().Get(gateEntity);
                     
-                    var leftPercent = (1 - lerpTimeComponent.StartPercent);
-                    if (buttonComponent.TriggerBehaviour.IsTriggered)
+                    if (gateEnvironmentComponent.EnvironmentType != buttonEnvironmentComponent.EnvironmentType) continue;
+                    if (buttonTriggerComponent.TriggerBehaviour.IsTriggered != (gateLerpTimeComponent.StartTime == 0)) continue;
+                    
+                    var leftPercent = (1 - gateLerpTimeComponent.StartPercent);
+                    if (buttonTriggerComponent.TriggerBehaviour.IsTriggered)
                     {
-                        lerpTimeComponent.StartTime = Time.time;
-                        var leftTime = animationTimeComponent.Time * leftPercent;
+                        gateLerpTimeComponent.StartTime = Time.time;
+                        var leftTime = gateAnimationTimeComponent.Time * leftPercent;
                                 
-                        lerpTimeComponent.EndTime = Time.time + leftTime;
+                        gateLerpTimeComponent.EndTime = Time.time + leftTime;
                     }
                     else
                     {
-                        var currentPercent = (Time.time - lerpTimeComponent.StartTime)
-                            / (lerpTimeComponent.EndTime - lerpTimeComponent.StartTime) *
-                            leftPercent + lerpTimeComponent.StartPercent;
-                        lerpTimeComponent.StartPercent = currentPercent;
-                        lerpTimeComponent.EndTime = 0;
-                        lerpTimeComponent.StartTime = 0;
+                        var currentPercent = (Time.time - gateLerpTimeComponent.StartTime)
+                            / (gateLerpTimeComponent.EndTime - gateLerpTimeComponent.StartTime) *
+                            leftPercent + gateLerpTimeComponent.StartPercent;
+                        gateLerpTimeComponent.StartPercent = currentPercent;
+                        gateLerpTimeComponent.EndTime = 0;
+                        gateLerpTimeComponent.StartTime = 0;
                     }
                 }
             }

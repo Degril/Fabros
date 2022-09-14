@@ -1,4 +1,4 @@
-﻿using Leopotam.Ecs;
+﻿using Leopotam.EcsLite;
 using UnityEngine;
 
 namespace Components.Server.Character.Movement
