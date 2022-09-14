@@ -10,5 +10,5 @@
 Полный список:
 * PremovingRotationSystem
 * MoveSystem 
-* GateOpeningSystem
+* GateOpeningCommandSystem
 * CharacterStateSystem
