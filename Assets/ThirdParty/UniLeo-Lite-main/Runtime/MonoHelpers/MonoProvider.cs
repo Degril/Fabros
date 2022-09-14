@@ -1,6 +1,5 @@
 using UnityEngine;
 using Leopotam.EcsLite;
-using System.Collections.Generic;
 
 namespace Voody.UniLeo.Lite
 {

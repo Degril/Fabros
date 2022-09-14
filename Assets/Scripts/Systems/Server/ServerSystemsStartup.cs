@@ -22,7 +22,7 @@ namespace Systems.Server
                 new MoveCommandSystem(),
                 new PreMovingRotationSystem(),
                 new MoveSystem(),
-                new GateOpeningSystem(),
+                new GateOpeningCommandSystem(),
                 new CharacterStateSystem(),
             };
         }

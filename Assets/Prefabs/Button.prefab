@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value:
-    <TriggerBehaviour>k__BackingField: {fileID: 286734830706392753}
+    triggerBehaviour: {fileID: 286734830706392753}
 --- !u!114 &286734830706392753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value:
-    <EnvironmentType>k__BackingField: 0
+    environmentType: 0
 --- !u!114 &4649016698387857848
 MonoBehaviour:
   m_ObjectHideFlags: 0

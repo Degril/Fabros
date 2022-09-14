@@ -1,8 +1,8 @@
 ﻿namespace Components.Server.Character.Movement
 {
-    internal struct MovableDataComponent
+    public struct MovableDataComponent
     {
-        internal float RotationSpeed { get; set; } 
-        internal float MovementSpeed { get; set; }
+        public float RotationSpeed { get; set; } 
+        public float MovementSpeed { get; set; }
     }
 }

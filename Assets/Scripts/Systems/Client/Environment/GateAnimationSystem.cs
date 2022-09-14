@@ -1,4 +1,4 @@
-﻿using Components.Client;
+﻿using Components.Server;
 using Components.Server.Character;
 using Components.Server.Environment;
 using Leopotam.EcsLite;
@@ -14,6 +14,8 @@ namespace Systems.Client.Environment
             var filter = world.Filter<LerpTimeComponent>()
                 .Inc<MovingDataAnimationComponent>()
                 .Inc<OrientationComponent>().End ();
+            
+            var time = Time.time;
             foreach (var entity in filter)
             {
                 var lerpTimeComponent =  world.GetPool<LerpTimeComponent>().Get(entity);
@@ -24,13 +26,13 @@ namespace Systems.Client.Environment
                     continue;
 
                 var leftPercent = (1 - lerpTimeComponent.StartPercent);
-                
-                var currentPercent = (Time.time - lerpTimeComponent.StartTime)
+
+                var currentPercent = (time - lerpTimeComponent.StartTime)
                     / (lerpTimeComponent.EndTime - lerpTimeComponent.StartTime) *
                     leftPercent + lerpTimeComponent.StartPercent;
 
-                orientation.Position = Vector3.Lerp(movingDataAnimationComponent.StartPosition,
-                    movingDataAnimationComponent.EndPosition, currentPercent);
+                orientation.Position = Vector3.Lerp(movingDataAnimationComponent.startPosition,
+                    movingDataAnimationComponent.endPosition, currentPercent);
             }
         }
     }

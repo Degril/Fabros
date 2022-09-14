@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Components.Server.Character
 {
+    [Serializable]
     public struct OrientationComponent
     {
-        public Vector3 Position { get; set; }
-        public Quaternion Rotation { get; set; }
+        public Vector3 Position;
+        public Quaternion Rotation;
     }
 }

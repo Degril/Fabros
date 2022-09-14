@@ -421,6 +421,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 398394017}
     m_Modifications:
+    - target: {fileID: 2253616938990228129, guid: 5fe5547b475d3c94eb077944328b1d14, type: 3}
+      propertyPath: value.time
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318638786128990456, guid: 5fe5547b475d3c94eb077944328b1d14, type: 3}
+      propertyPath: value.endPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318638786128990456, guid: 5fe5547b475d3c94eb077944328b1d14, type: 3}
+      propertyPath: value.endPosition.y
+      value: -8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318638786128990456, guid: 5fe5547b475d3c94eb077944328b1d14, type: 3}
+      propertyPath: value.endPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318638786128990456, guid: 5fe5547b475d3c94eb077944328b1d14, type: 3}
+      propertyPath: value.startPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318638786128990456, guid: 5fe5547b475d3c94eb077944328b1d14, type: 3}
+      propertyPath: value.startPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318638786128990456, guid: 5fe5547b475d3c94eb077944328b1d14, type: 3}
+      propertyPath: value.startPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3318638786128990456, guid: 5fe5547b475d3c94eb077944328b1d14, type: 3}
       propertyPath: value.<EndPosition>k__BackingField.x
       value: 8.66
@@ -493,6 +521,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9060740352833020459, guid: 5fe5547b475d3c94eb077944328b1d14, type: 3}
+      propertyPath: value.Transform
+      value: 
+      objectReference: {fileID: 1547520280}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fe5547b475d3c94eb077944328b1d14, type: 3}
 --- !u!1001 &229712314
@@ -559,6 +591,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 398394017}
     m_Modifications:
+    - target: {fileID: 2253616938990228129, guid: 5fe5547b475d3c94eb077944328b1d14, type: 3}
+      propertyPath: value.time
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318638786128990456, guid: 5fe5547b475d3c94eb077944328b1d14, type: 3}
+      propertyPath: value.endPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318638786128990456, guid: 5fe5547b475d3c94eb077944328b1d14, type: 3}
+      propertyPath: value.endPosition.y
+      value: -8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318638786128990456, guid: 5fe5547b475d3c94eb077944328b1d14, type: 3}
+      propertyPath: value.endPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318638786128990456, guid: 5fe5547b475d3c94eb077944328b1d14, type: 3}
+      propertyPath: value.startPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318638786128990456, guid: 5fe5547b475d3c94eb077944328b1d14, type: 3}
+      propertyPath: value.startPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3318638786128990456, guid: 5fe5547b475d3c94eb077944328b1d14, type: 3}
       propertyPath: value.<EndPosition>k__BackingField.x
       value: -4.719999
@@ -582,6 +638,10 @@ PrefabInstance:
     - target: {fileID: 3318638786128990456, guid: 5fe5547b475d3c94eb077944328b1d14, type: 3}
       propertyPath: value.<StartPosition>k__BackingField.z
       value: 0.5900002
+      objectReference: {fileID: 0}
+    - target: {fileID: 3703281312681638531, guid: 5fe5547b475d3c94eb077944328b1d14, type: 3}
+      propertyPath: value.environmentType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3703281312681638531, guid: 5fe5547b475d3c94eb077944328b1d14, type: 3}
       propertyPath: value.<EnvironmentType>k__BackingField
@@ -639,6 +699,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9060740352833020459, guid: 5fe5547b475d3c94eb077944328b1d14, type: 3}
+      propertyPath: value.Transform
+      value: 
+      objectReference: {fileID: 1255200378}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fe5547b475d3c94eb077944328b1d14, type: 3}
 --- !u!1 &398394016
@@ -1141,7 +1205,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1146129922}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.97, y: 0.73, z: -10.54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1154,6 +1218,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3073894180442980122, guid: 35c37b91c1eed6140af3a18d54a97199, type: 3}
   m_PrefabInstance: {fileID: 1753008078}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1244278599 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 286734830706392753, guid: 35c37b91c1eed6140af3a18d54a97199, type: 3}
+  m_PrefabInstance: {fileID: 1753008078}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e39e3f56403570a4b9362c465157b076, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1255200378 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8855886293480505622, guid: 5fe5547b475d3c94eb077944328b1d14, type: 3}
@@ -1171,6 +1246,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 398394017}
     m_Modifications:
+    - target: {fileID: 1019882262139490414, guid: 35c37b91c1eed6140af3a18d54a97199, type: 3}
+      propertyPath: value.triggerBehaviour
+      value: 
+      objectReference: {fileID: 1244278599}
     - target: {fileID: 3073894180442980122, guid: 35c37b91c1eed6140af3a18d54a97199, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1219,6 +1298,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: bdf42b5609f645a4c97d8e8bed15087e, type: 2}
+    - target: {fileID: 6727221748444581436, guid: 35c37b91c1eed6140af3a18d54a97199, type: 3}
+      propertyPath: value.environmentType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6727221748444581436, guid: 35c37b91c1eed6140af3a18d54a97199, type: 3}
       propertyPath: value.<EnvironmentType>k__BackingField
       value: 1

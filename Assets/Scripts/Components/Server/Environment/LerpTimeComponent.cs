@@ -1,9 +1,12 @@
-﻿namespace Components.Server.Environment
+﻿using System;
+
+namespace Components.Server.Environment
 {
+    [Serializable]
     public struct LerpTimeComponent
     {
-        public float StartTime { get; set; }
-        public float StartPercent { get; set; }
-        public float EndTime { get; set; }
+        public float StartTime;
+        public float StartPercent;
+        public float EndTime;
     }
 }

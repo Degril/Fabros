@@ -3,6 +3,7 @@ using Leopotam.EcsLite;
 using Services;
 using Systems.Client.CharacterMovement;
 using Systems.Client.Environment;
+using Systems.Server.Environment;
 
 namespace Systems.Client
 {
@@ -12,7 +13,8 @@ namespace Systems.Client
         {
             return new IEcsSystem[]
             {
-                new InputSystem(services.Input)
+                new InputSystem(services.Input),
+                new GateOpeningSystem()
             };
         }
 

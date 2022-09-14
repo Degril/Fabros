@@ -6,6 +6,6 @@ namespace Services.Client.CharacterMovement
     [Serializable]
     public struct TransformComponent
     {
-        [field: SerializeField] public Transform Transform { get; set; }
+        public Transform Transform;
     }
 }

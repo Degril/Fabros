@@ -47,10 +47,10 @@ namespace Systems
                 foreach (var preUpdateSystem in systemsStartup.GetPostUpdateSystems(services))
                     _postUpdateSystems.Add(preUpdateSystem);
             }
+            _preUpdateSystems.ConvertScene();
 
             foreach (var ecsSystems in _systemsQueue)
             {
-                ecsSystems.ConvertScene();
                 ecsSystems.Init();
             }
         }

@@ -14,6 +14,9 @@ namespace Systems.Server.CharacterMovement
                 .Inc<RotateBeforeMovingComponent>()
                 .Inc<OrientationComponent>().End();
             
+            var currentTime = Time.time;
+            var deltaTime = Time.deltaTime;
+            
             foreach (var entity in filter)
             {
                 var movableData = world.GetPool<MovableDataComponent>().Get(entity);
@@ -28,7 +31,7 @@ namespace Systems.Server.CharacterMovement
                 var rotationDistance = Vector3.Dot(transformForward, direction);
                 if (rotationDistance < 0.97f)
                 {
-                    var singleStep = movableData.RotationSpeed * Time.deltaTime;
+                    var singleStep = movableData.RotationSpeed * deltaTime;
                     
                     var newDirection = Vector3.RotateTowards(transformForward, direction, singleStep, 0.0f);
                     orientation.Rotation = Quaternion.LookRotation(newDirection);
@@ -40,9 +43,9 @@ namespace Systems.Server.CharacterMovement
                     movableComponent.TargetPosition = rotateComponent.TargetPosition;
                     
                     var distance = (rotateComponent.TargetPosition - orientation.Position).magnitude;
-                    
-                    movableComponent.MovingStartTime = Time.time;
-                    movableComponent.MovingEndTime = Time.time + distance / movableData.MovementSpeed;
+
+                    movableComponent.MovingStartTime = currentTime;
+                    movableComponent.MovingEndTime = currentTime + distance / movableData.MovementSpeed;
                     world.GetPool<RotateBeforeMovingComponent>().Del(entity);
                 }
             }
